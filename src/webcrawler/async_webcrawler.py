@@ -175,14 +175,7 @@ skipped_visited_count=0
 skipped_other_content_type=0
 async def main():
     default_path=None
-    # url="https://bloo.io/"
-
     url="https://www.w3schools.com/"
-
-    # url="https://premium.mysirg.com/learn"
-    # default_path="/learn"
-
-    # url="https://dnif.it/"
     queue = asyncio.Queue(maxsize=max_mqueue_size)
     file_queue=FileQueue(queue_dir=fqueue_dir)
     if file_queue.is_empty():
