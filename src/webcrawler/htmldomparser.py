@@ -18,8 +18,7 @@ class HTMLDocumentParser:
         # Create a BeautifulSoup object
         self.soup = BeautifulSoup(self.html_doc, 'html.parser')
         # Accessing elements
-        logging.info(f"soup type: {type(self.soup)}")
-        logging.info(f"Parsing HTML Document with Title: {self.soup.title}")
+        logging.debug(f"Parsing HTML Document with Title: {self.soup.title}")
     
     @classmethod
     def load_html_doc(cls, filepath):
