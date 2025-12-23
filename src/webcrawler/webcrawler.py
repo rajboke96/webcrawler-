@@ -76,8 +76,8 @@ class HTMLDocumentParser:
                 data.append(self.origin+link.get('href'))
         return data
 
-url="https://bloo.io/"
-origin="https://bloo.io"
+url="https://www.w3schools.com/"
+origin="https://www.w3schools.com/"
 
 all_links=[]
 def rwebscraper(url, origin):
