@@ -45,14 +45,7 @@ visited_links=[]
 skipped_visited_count=0
 def main():
     default_path=None
-    # url="https://bloo.io/"
-
     # url="https://www.w3schools.com/"
-
-    url="https://premium.mysirg.com/learn"
-    default_path="/learn"
-
-    # url="https://dnif.it/"
 
     asyncio.run(webscraper(url, default_path=default_path))
     logging.info(f"Total visited links: {len(visited_links)}")
