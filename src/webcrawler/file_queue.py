@@ -4,8 +4,8 @@ import os
 from json_serializer import JsonSerializer, JsonSerializerClass
 from directory_helper import Directory
 
-level=logging.DEBUG
-logging.basicConfig(level=level)
+# level=logging.DEBUG
+# logging.basicConfig(level=level)
 
 class QueueUnderFlow(Exception): pass
 class QueueOverFLow(Exception): pass
@@ -92,8 +92,8 @@ class FileQueue:
 
 
 if __name__ == "__main__":
-    from config import data_dir
-    q1=FileQueue(queue_dir=data_dir, queue_name="test_queue")
+    from config import DATA_DIR
+    q1=FileQueue(queue_dir=DATA_DIR, queue_name="test_queue")
     items_list=['Hello', 'World', 'Bye']
     q1.enqueue_bulk(items_list)
     q1.enqueue_bulk(items_list)

@@ -3,8 +3,6 @@ import os
 from urllib.parse import urlparse, urlunsplit
 import logging
 
-from decorators import decorate_with
-
 from helper import is_valid_url
 
 class HTMLDocumentParser:
@@ -27,7 +25,6 @@ class HTMLDocumentParser:
             html_doc = f.read()
         return html_doc
         
-    # @decorate_with(symbol, repeat_count)
     def get_all_links(self, default_path=None):
         all_links = []
         for link_tag in self.soup.find_all(href=True): # 'href=True' ensures the tag has a 'href' attribute

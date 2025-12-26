@@ -1,5 +1,4 @@
-import json
-from urllib.parse import urlparse, urlunsplit
+from urllib.parse import urlparse
 
 def is_valid_url(url):
     try:

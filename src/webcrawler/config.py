@@ -1,10 +1,13 @@
 import os
 
+HOME_DIR="/home/rajendra/projects/python-projects/webcrawler-"
+os.environ["WEBCRAWLER_HOME"]=HOME_DIR
+
 # home
-home_dir=os.environ["WEBCRAWLER_HOME"]
+HOME_DIR=os.environ["WEBCRAWLER_HOME"]
 
 # Data
-data_dir=f"{home_dir}/data"
+DATA_DIR=f"{HOME_DIR}/data"
 
 # logs
-log_dir=f"{home_dir}/log"
+LOG_DIR=f"{HOME_DIR}/log"

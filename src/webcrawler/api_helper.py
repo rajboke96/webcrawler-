@@ -1,9 +1,7 @@
 import aiohttp
 import logging
 
-from decorators import cal_time, decorate_with
-
-from urllib.parse import urlparse, urlunsplit
+from urllib.parse import urlparse
 
 def is_valid_url(url):
     try:
@@ -12,7 +10,6 @@ def is_valid_url(url):
     except ValueError:
         return False
 
-# @decorate_with(symbol, repeat_count)
 async def fetch(url, outfilepath=None, accept_type='text/html'):
     try:
         logging.debug(f"Fetching url: {url}")
