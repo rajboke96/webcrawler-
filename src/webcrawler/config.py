@@ -1,10 +1,10 @@
 import os
 
 # home
-app_dir=os.environ["APP_DIR"]
+home_dir=os.environ["WEBCRAWLER_HOME"]
 
 # Data
-data_dir=f"{app_dir}/data"
+data_dir=f"{home_dir}/data"
 
 # logs
-log_dir=f"{app_dir}/log"
+log_dir=f"{home_dir}/log"
