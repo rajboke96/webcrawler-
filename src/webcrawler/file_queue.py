@@ -4,8 +4,8 @@ import os
 from json_serializer import JsonSerializer, JsonSerializerClass
 from directory_helper import Directory
 
-# level=logging.DEBUG
-# logging.basicConfig(level=level)
+level=logging.DEBUG
+logging.basicConfig(level=level)
 
 class QueueUnderFlow(Exception): pass
 class QueueOverFLow(Exception): pass
@@ -24,10 +24,10 @@ class FileQueue:
         self.queue=JsonQueueSerializer(front="", rear="", size=0)
         self.json_serializer=JsonSerializer(JsonQueueSerializer)
         if not os.path.exists(self.queue_file):
-            logging.info(f"Queue file not found! Creating: {self.queue_file} with default: {self.queue}")
+            logging.info(f"{queue_name} file not found! Creating: {self.queue_file} with default: {self.queue}")
             self.json_serializer.dump(self.queue, self.queue_file)
         else:
-            logging.info(f"Queue file found! Loading!")
+            logging.info(f"{queue_name} file found! Loading!")
             self.queue=self.json_serializer.load(self.queue_file)
 
     def is_empty(self):

@@ -88,7 +88,7 @@ skipped_visited_count=0
 def main():
     default_path=None
 
-    # url="https://www.w3schools.com/"
+    url="https://www.w3schools.com/"
 
     asyncio.run(webscraper(url, default_path=default_path))
     logging.info(f"Total visited links: {len(visited_links)}")
