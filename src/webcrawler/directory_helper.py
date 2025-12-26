@@ -17,10 +17,12 @@ class Directory:
     def write_to_file(self, file_name, txt):
         with open(f"{self.dir}/{file_name}", "w") as f:
             f.write(txt)
+            return f.tell()
 
     def writelines_to_file(self, file_name, data):
         with open(f"{self.dir}/{file_name}", "w") as f:
             f.writelines(data)
+            return f.tell()
 
     def read_from_file(self, file_name):
         with open(f"{self.dir}/{file_name}", "r") as f:
