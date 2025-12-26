@@ -1,5 +1,7 @@
+import os
+
 # home
-app_dir=f"/home/rajendra/projects/python-projects/webcrawler-"
+app_dir=os.environ["APP_DIR"]
 
 # Data
 data_dir=f"{app_dir}/data"

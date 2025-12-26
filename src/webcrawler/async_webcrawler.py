@@ -4,8 +4,8 @@ import time
 import os
 from datetime import datetime
 
-from file_buffer_queue import FileQueue
-from file_buffer_queue import QueueOverFLow, QueueUnderFlow
+from file_queue import FileQueue
+from file_queue import QueueOverFLow, QueueUnderFlow
 
 from decorators import cal_time, decorate_with
 from htmldomparser import HTMLDocumentParser
@@ -21,11 +21,12 @@ from config import data_dir
 service_name=__name__
 if __name__=="__main__":
     service_name="async_webcrawler"
-level=logging.DEBUG
+level=logging.INFO
 filename=f"{log_dir}/{service_name}.log"
 filemode="w"
 
-fqueue_dir=f"{data_dir}/queue"
+fqueue_name="queue"
+fqueue_dir=f"{data_dir}"
 fqueue_item_size=500
 
 max_mqueue_size=200
@@ -35,11 +36,10 @@ max_local_buffer=fqueue_item_size+local_buffer_size
 
 logging.basicConfig(level=level, filename=filename, filemode=filemode)
 
-async def worker(name, queue, task):
+async def worker(name, queue, file_queue, task):
     # Each worker has its own small local buffer
     local_buffer = []
     logging.info(f"{name} - Entering infinite loop..")
-    file_queue=FileQueue(queue_dir=fqueue_dir)
     chk_time=time.time()+10
     while True:
         # log metrics
@@ -177,14 +177,14 @@ async def main():
     default_path=None
     url="https://www.w3schools.com/"
     queue = asyncio.Queue(maxsize=max_mqueue_size)
-    file_queue=FileQueue(queue_dir=fqueue_dir)
+    file_queue=FileQueue(queue_dir=fqueue_dir, queue_name="queue")
     if file_queue.is_empty():
         # queue.put_nowait(f"link1\n") # Start seed
         # queue.put_nowait(f"link2\n") # Start seed
         # queue.put_nowait(f"link3\n") # Start seed
         logging.info(f"Seeding with - {url}")
         queue.put_nowait(f"{url}") # Start seed
-    workers = [asyncio.create_task(worker(f"Worker-{i}", queue, consumer)) for i in range(5)]
+    workers = [asyncio.create_task(worker(f"Worker-{i}", queue, file_queue, consumer)) for i in range(5)]
     await queue.join()
     [await worker for worker in workers]
 
