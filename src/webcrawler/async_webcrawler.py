@@ -10,8 +10,8 @@ from file_queue import QueueOverFLow, QueueUnderFlow
 from decorators import cal_time, decorate_with
 from htmldomparser import HTMLDocumentParser
 
-from helper import is_valid_url, format_bytes
-from api_helper import fetch
+from helper import format_bytes
+from api_helper import fetch, is_valid_url
 
 import async_webcrawler_config as config
 
